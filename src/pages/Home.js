@@ -44,6 +44,11 @@ const Heading = styled.h1`
 const InputGroup = styled.div`
   display: flex;
   margin-top: 2rem;
+  justify-content: ${(props) => (props.center ? "center" : "flex-start")};
+`;
+
+const InnerInputGroup = styled.div`
+  margin-right: 1rem;
 `;
 
 const HeadingGroup = styled.div`
@@ -106,11 +111,16 @@ const shapesMap = {
   hexagon: Hexagon,
   star: Star,
 };
+
+const Label = styled.label`
+  color: #fff;
+`;
 const Home = ({ isDark, setDark }) => {
   const [shapeName, setShapeName] = React.useState("");
   const [length, setLength] = React.useState(300);
   const Shape = shapesMap[shapeName];
-  const fill = "#f5f5f5";
+  const [fill, setFill] = React.useState("#f5f5f5");
+  const [stroke, setStroke] = React.useState("black");
   return (
     <Container>
       <TopHalf>
@@ -151,10 +161,36 @@ const Home = ({ isDark, setDark }) => {
               }}
             />
           </InputGroup>
+          <InputGroup center>
+            <InnerInputGroup>
+              <Label htmlFor="fill">Fill: &nbsp;</Label>
+              <input
+                type="color"
+                name="fill"
+                value={fill}
+                onChange={(e) => {
+                  setFill(e.target.value);
+                }}
+              />
+            </InnerInputGroup>
+            <InnerInputGroup>
+              <Label htmlFor="fill">Stroke: &nbsp;</Label>
+              <input
+                type="color"
+                name="stroke"
+                value={stroke}
+                onChange={(e) => {
+                  setStroke(e.target.value);
+                }}
+              />
+            </InnerInputGroup>
+          </InputGroup>
         </HeadingGroup>
       </TopHalf>
       <BottomHalf>
-        <DrawBoard>{Shape && <Shape length={length} fill={fill} />}</DrawBoard>
+        <DrawBoard>
+          {Shape && <Shape length={length} fill={fill} stroke={stroke} />}
+        </DrawBoard>
       </BottomHalf>
     </Container>
   );

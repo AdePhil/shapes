@@ -3,7 +3,13 @@ import { motion } from "framer-motion";
 import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
 
-function Rectangle({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
+function Rectangle({
+  length: len = 0,
+  strokeWidth = 2,
+  stroke,
+  fill,
+  ...rest
+}) {
   const length = parseInt(len);
   const xViewPortSize = length + strokeWidth * 2;
   const yViewPortSize = length * 0.5 + strokeWidth * 2;
@@ -23,7 +29,7 @@ function Rectangle({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
         initial="initial"
         animate={controls}
         d={`M 0 0 H ${length} V ${length / 2} H 0 L 0 0`}
-        stroke="black"
+        stroke={stroke}
         fill={fill}
         strokeWidth={strokeWidth}
       />

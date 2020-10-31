@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
 
-function Triangle({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
+function Triangle({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const length = parseInt(len);
   const viewPortSize = length + strokeWidth * 2;
   const controls = useShapeAnimation(length);
@@ -22,7 +22,7 @@ function Triangle({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
         initial="initial"
         animate={controls}
         d={`M ${length / 2}  0 L ${length} ${length} H 0 L ${length / 2} 0`}
-        stroke="black"
+        stroke={stroke}
         fill={fill}
         strokeWidth={strokeWidth}
       />

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
 
-function Hexagon({ length: len = 2, fill, strokeWidth = 2, ...rest }) {
+function Hexagon({ length: len = 2, fill, stroke, strokeWidth = 2, ...rest }) {
   const length = parseInt(len);
   const xviewPortSize = length + 4;
   const yviewPortSize = 2 * length + 4;
@@ -26,7 +26,7 @@ function Hexagon({ length: len = 2, fill, strokeWidth = 2, ...rest }) {
         }  L ${length} ${length} L ${length / 2} ${
           length + length * 0.5
         } L 0 ${length} L 0 ${length / 2}`}
-        stroke="black"
+        stroke={stroke}
         fill={fill}
         strokeWidth={strokeWidth}
       />

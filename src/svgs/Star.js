@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
 
-function Star({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
+function Star({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const calcStarPoints = (
     centerX,
     centerY,
@@ -66,7 +66,7 @@ function Star({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
         initial="initial"
         animate={controls}
         d={points}
-        stroke="black"
+        stroke={stroke}
         fill={fill}
         strokeWidth={2}
       />

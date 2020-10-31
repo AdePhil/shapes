@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
 
-function Square({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
+function Square({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
   const length = parseInt(len);
   const viewPortSize = length + strokeWidth * 2;
   const controls = useShapeAnimation(length);
@@ -21,7 +21,7 @@ function Square({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
         initial="initial"
         animate={controls}
         d={`M 0 0 H ${length} V ${length} H 0 L 0 0`}
-        stroke="black"
+        stroke={stroke}
         fill={fill}
         strokeWidth={strokeWidth}
       />

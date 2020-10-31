@@ -21,8 +21,7 @@ const Input = styled.input`
   min-height: 50px;
   height: ${(props) => (props.padding ? "auto" : "4.8rem")};
   width: 100%;
-  flex: 1;
-
+  flex: ${(props) => props.flex || 1};
   &:disabled {
     /* background-color: rgba(128, 128, 128, 0.12); */
   }

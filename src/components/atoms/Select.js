@@ -22,6 +22,7 @@ const Select = styled.select`
   position: relative;
   width: 100%;
   flex: 1;
+  text-transform: capitalize;
   margin: ${({ m }) => m || "auto"};
   ${({ disabled }) =>
     disabled &&

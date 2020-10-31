@@ -1,5 +1,9 @@
-import colors from "./colors";
+import { lightThemeColors, darkThemeColors } from "./colors";
 
-export const theme = {
-  colors,
+export const darkTheme = {
+  colors: darkThemeColors,
+};
+
+export const lightTheme = {
+  colors: lightThemeColors,
 };

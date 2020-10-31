@@ -5,28 +5,32 @@ import Bg from "../assets/pngs/bg2.jpg";
 import Circle from "../svgs/Circle";
 import Rectangle from "../svgs/Rectangle";
 import Square from "../svgs/Sqaure";
-import Polygon from "../svgs/Polygon";
+import lightIcon from "../assets/svgs/light.svg";
+import darkIcon from "../assets/svgs/dark.svg";
+import Triangle from "../svgs/Triangle";
+import Pentagon from "../svgs/Pentagon";
+import Hexagon from "../svgs/Hexagon";
+import Star from "../svgs/Star";
 
 const Container = styled.div`
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
 `;
 const TopHalf = styled.div`
-  height: 45vh;
   box-shadow: 0 0px 50px rgba(0, 0, 0, 0.16);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(45, 55, 72, 1);
   background-image: url(${Bg});
   background: linear-gradient(
-      rgba(45, 55, 72, 0.98) 100%,
-      rgba(45, 55, 72, 0.98) 100%
+      rgba(22, 22, 29, 0.95) 100%,
+      rgba(22, 22, 29, 0.95) 100%
     ),
     url(${Bg});
   background-size: contain;
   padding: 0 1.5rem;
+  position: relative;
+  flex: 0.5;
 `;
 
 const Heading = styled.h1`
@@ -63,20 +67,62 @@ const DrawBoard = styled.div`
   flex: 1;
 `;
 
+const BottomHalf = styled.div`
+  background-color: ${(props) => props.theme.colors.body};
+  transition: all 1s;
+  width: 100%;
+  flex: 0.5;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+`;
+
+const ModeButton = styled.button`
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 50px;
+  cursor: pointer;
+  padding: 5px;
+`;
+
 const shapesMap = {
   circle: Circle,
   rectangle: Rectangle,
   square: Square,
-  pentagon: Polygon,
+  triangle: Triangle,
+  pentagon: Pentagon,
+  hexagon: Hexagon,
+  star: Star,
 };
-const Home = () => {
+const Home = ({ isDark, setDark }) => {
   const [shapeName, setShapeName] = React.useState("");
-  const [length, setLength] = React.useState(100);
+  const [length, setLength] = React.useState(300);
   const Shape = shapesMap[shapeName];
   const fill = "#f5f5f5";
   return (
     <Container>
       <TopHalf>
+        <Header>
+          <ModeButton onClick={() => setDark((currentTheme) => !currentTheme)}>
+            {isDark ? (
+              <img src={lightIcon} alt="light mode" />
+            ) : (
+              <img src={darkIcon} alt="dark mode" />
+            )}
+          </ModeButton>
+        </Header>
         <HeadingGroup>
           <Heading>Awesome Shapes</Heading>
           <InputGroup>
@@ -85,23 +131,31 @@ const Home = () => {
               placeholder="Select shape to draw"
               onChange={(e) => setShapeName(e.target.value)}
             >
-              <option value={null} selected>
+              <option value={null} defaultValue>
                 Select shape to draw
               </option>
-              <option value="circle">Circle</option>
-              <option value="rectangle">Rectangle</option>
-              <option value="square">Square</option>
-              <option value="polygon">Polygon</option>
+              {Object.keys(shapesMap).map((shapeName) => (
+                <option key={shapeName} value={shapeName}>
+                  {shapeName}
+                </option>
+              ))}
             </Select>
             <Input
               type="number"
+              name="length"
               placeholder="Enter shape length"
-              onChange={(e) => setLength(e.target.value)}
+              value={length}
+              onChange={(e) => {
+                console.log(e.target.value);
+                setLength(e.target.value);
+              }}
             />
           </InputGroup>
         </HeadingGroup>
       </TopHalf>
-      <DrawBoard>{Shape && <Shape length={length} fill={fill} />}</DrawBoard>
+      <BottomHalf>
+        <DrawBoard>{Shape && <Shape length={length} fill={fill} />}</DrawBoard>
+      </BottomHalf>
     </Container>
   );
 };

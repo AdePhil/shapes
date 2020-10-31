@@ -2,9 +2,10 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
-function Circle({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
+
+function Triangle({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
   const length = parseInt(len);
-  const viewPortSize = length + 4;
+  const viewPortSize = length + strokeWidth * 2;
   const controls = useShapeAnimation(length);
 
   if (!length) return null;
@@ -20,16 +21,13 @@ function Circle({ length: len = 0, strokeWidth = 2, fill, ...rest }) {
         variants={pathVariants}
         initial="initial"
         animate={controls}
-        strokeWidth={strokeWidth}
-        stroke="#000"
+        d={`M ${length / 2}  0 L ${length} ${length} H 0 L ${length / 2} 0`}
+        stroke="black"
         fill={fill}
-        d={`M ${length / 2 - length / 2}, ${length / 2}
-          a ${length / 2}, ${length / 2} 0 1, 1 ${length}, 0
-          a ${length / 2},${length / 2} 0 1, 1 -${length}, 0
-        `}
+        strokeWidth={strokeWidth}
       />
     </svg>
   );
 }
 
-export default Circle;
+export default Triangle;

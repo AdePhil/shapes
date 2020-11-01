@@ -29,7 +29,7 @@ function Star({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
 
   const getStarPoints = () => {
     let centerX = length / 2;
-    let centerY = length / 2;
+    let centerY = length;
     let innerCirclePoints = 5;
 
     let innerRadius = length / innerCirclePoints;

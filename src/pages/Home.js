@@ -12,10 +12,24 @@ import Pentagon from "../svgs/Pentagon";
 import Hexagon from "../svgs/Hexagon";
 import Star from "../svgs/Star";
 import { useLocalStorage } from "../Hooks/useLocalStorage";
+import CutDiamond from "../svgs/CutDiamond";
+import Diamond from "../svgs/Diamond";
+import TvScreen from "../svgs/TvScreen";
+import Cone from "../svgs/Cone";
+import Envelop from "../svgs/Envelop";
+import Plus from "../svgs/Plus";
+import Trapezoid from "../svgs/Trapezoid";
+import Message from "../svgs/Message";
+import LeftArrow from "../svgs/LeftArrow";
 
 const Container = styled.div`
   height: 100vh;
   display: flex;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
 `;
 const TopHalf = styled.div`
   box-shadow: 0 0px 50px rgba(0, 0, 0, 0.16);
@@ -85,6 +99,10 @@ const BottomHalf = styled.div`
   align-items: center;
   overflow-x: hidden;
   overflow-y: scroll;
+
+  @media (max-width: 1000px) {
+    align-items: flex-start;
+  }
 `;
 
 const Header = styled.div`
@@ -113,6 +131,15 @@ const shapesMap = {
   pentagon: Pentagon,
   hexagon: Hexagon,
   star: Star,
+  "cut-diamond": CutDiamond,
+  diamond: Diamond,
+  "tv-screen": TvScreen,
+  cone: Cone,
+  envelop: Envelop,
+  plus: Plus,
+  trapezoid: Trapezoid,
+  message: Message,
+  "left-arrow": LeftArrow,
 };
 
 const Label = styled.label`
@@ -164,7 +191,6 @@ const Home = ({ isDark, setDark }) => {
               placeholder="Enter shape length"
               value={length}
               onChange={(e) => {
-                console.log(e.target.value);
                 setLength(e.target.value);
               }}
             />

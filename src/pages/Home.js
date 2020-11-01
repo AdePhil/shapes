@@ -11,6 +11,7 @@ import Triangle from "../svgs/Triangle";
 import Pentagon from "../svgs/Pentagon";
 import Hexagon from "../svgs/Hexagon";
 import Star from "../svgs/Star";
+import { useLocalStorage } from "../Hooks/useLocalStorage";
 
 const Container = styled.div`
   height: 100vh;
@@ -119,11 +120,14 @@ const Label = styled.label`
 `;
 
 const Home = ({ isDark, setDark }) => {
-  const [shapeName, setShapeName] = React.useState("");
-  const [length, setLength] = React.useState(300);
+  const [shapeName, setShapeName] = useLocalStorage("shapeName", "");
+
+  const [fill, setFill] = useLocalStorage("fill", "#f5f5f5");
+  const [stroke, setStroke] = useLocalStorage("stroke", "black");
+
+  const [length, setLength] = useLocalStorage("shapeLength", 300);
   const Shape = shapesMap[shapeName];
-  const [fill, setFill] = React.useState("#f5f5f5");
-  const [stroke, setStroke] = React.useState("black");
+
   return (
     <Container>
       <TopHalf>
@@ -142,6 +146,7 @@ const Home = ({ isDark, setDark }) => {
             <Select
               m="0 20px 0 0"
               placeholder="Select shape to draw"
+              value={shapeName}
               onChange={(e) => setShapeName(e.target.value)}
             >
               <option value={null} defaultValue>

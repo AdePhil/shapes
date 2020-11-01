@@ -49,12 +49,14 @@ const InputGroup = styled.div`
 
 const InnerInputGroup = styled.div`
   margin-right: 1rem;
+  display: flex;
+  align-items: center;
 `;
 
 const HeadingGroup = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -97,7 +99,7 @@ const ModeButton = styled.button`
   background: transparent;
   border: none;
   outline: none;
-  width: 50px;
+  width: 40px;
   cursor: pointer;
   padding: 5px;
 `;
@@ -115,6 +117,7 @@ const shapesMap = {
 const Label = styled.label`
   color: #fff;
 `;
+
 const Home = ({ isDark, setDark }) => {
   const [shapeName, setShapeName] = React.useState("");
   const [length, setLength] = React.useState(300);

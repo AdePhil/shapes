@@ -46,6 +46,9 @@ const TopHalf = styled.div`
   padding: 0 1.5rem;
   position: relative;
   flex: 0.5;
+  @media (max-width: 1000px) {
+    flex: 0.5;
+  }
 `;
 
 const Heading = styled.h1`
@@ -75,6 +78,9 @@ const HeadingGroup = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  @media (max-width: 600px) {
+    padding: 7rem 1rem 8rem;
+  }
 `;
 
 const DrawBoard = styled.div`

@@ -5,7 +5,7 @@ import useShapeAnimation from "../Hooks/useShapeAnimation";
 function Cone({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
   const length = parseInt(len);
   const curveSize = 45;
-  const viewPortSize = length + strokeWidth * 2 + 4 * curveSize;
+  const viewPortSize = length + strokeWidth * 2 + curveSize;
   const controls = useShapeAnimation(length);
 
   if (!length) return null;

@@ -21,6 +21,10 @@ import Plus from "../svgs/Plus";
 import Trapezoid from "../svgs/Trapezoid";
 import Message from "../svgs/Message";
 import LeftArrow from "../svgs/LeftArrow";
+import RightArrow from "../svgs/RightArrow";
+import Octagon from "../svgs/Octagon";
+import Parallelogram from "../svgs/Parallelogram";
+import Times from "../svgs/Times";
 
 const Container = styled.div`
   height: 100vh;
@@ -134,18 +138,22 @@ const shapesMap = {
   rectangle: Rectangle,
   square: Square,
   triangle: Triangle,
+  parallelogram: Parallelogram,
+  trapezoid: Trapezoid,
+  diamond: Diamond,
   pentagon: Pentagon,
   hexagon: Hexagon,
+  octagon: Octagon,
   star: Star,
   "cut-diamond": CutDiamond,
-  diamond: Diamond,
   "tv-screen": TvScreen,
   cone: Cone,
   envelop: Envelop,
   plus: Plus,
-  trapezoid: Trapezoid,
+  times: Times,
   message: Message,
   "left-arrow": LeftArrow,
+  "right-arrow": RightArrow,
 };
 
 const Label = styled.label`
@@ -155,8 +163,8 @@ const Label = styled.label`
 const Home = ({ isDark, setDark }) => {
   const [shapeName, setShapeName] = useLocalStorage("shapeName", "");
 
-  const [fill, setFill] = useLocalStorage("fill", "#f5f5f5");
-  const [stroke, setStroke] = useLocalStorage("stroke", "black");
+  const [fill, setFill] = useLocalStorage("fill", "#A3A3D7");
+  const [stroke, setStroke] = useLocalStorage("stroke", "#E19898");
 
   const [length, setLength] = useLocalStorage("shapeLength", 300);
   const Shape = shapesMap[shapeName];

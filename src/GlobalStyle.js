@@ -173,6 +173,10 @@ const GlobalStyle = (props) => (
         outline: none;
       }
 
+      input {
+        font-size: 16px;
+      }
+
       input[type="color"] {
         -webkit-appearance: none;
         border: none;

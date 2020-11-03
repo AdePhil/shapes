@@ -1,16 +1,21 @@
 import * as React from "react";
-import { useAnimation } from "framer-motion";
+import gsap from "gsap";
+import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin.min";
+
+gsap.registerPlugin(DrawSVGPlugin);
 
 const useShapeAnimation = (length) => {
-  const controls = useAnimation();
+  const pathRef = React.useRef();
+  const tl = gsap.timeline({ onComplete: function () {} });
 
   React.useEffect(() => {
-    if (!length) return;
-    controls.set("initial");
-    controls.start("animate");
-  }, [controls, length]);
+    const path = pathRef.current;
+    if (!path) return;
+    tl.set(path, { drawSVG: "0% 0%", opacity: 0 });
+    tl.to(path, 2, { drawSVG: "100% 0", opacity: 1, delay: 0.4 });
+  }, [tl, length]);
 
-  return controls;
+  return [pathRef];
 };
 
 export default useShapeAnimation;

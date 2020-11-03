@@ -1,11 +1,10 @@
 import * as React from "react";
-import { motion } from "framer-motion";
-import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
+
 function Circle({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const length = parseInt(len);
   const viewPortSize = length + 4;
-  const controls = useShapeAnimation(length);
+  const [pathRef] = useShapeAnimation(length);
 
   if (!length) return null;
 
@@ -16,10 +15,9 @@ function Circle({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
       height={`${length}px`}
       viewBox={`-${strokeWidth} -${strokeWidth} ${viewPortSize} ${viewPortSize}`}
     >
-      <motion.path
-        variants={pathVariants}
-        initial="initial"
-        animate={controls}
+      <path
+        id="path"
+        ref={pathRef}
         strokeWidth={strokeWidth}
         stroke={stroke}
         fill={fill}

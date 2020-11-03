@@ -1,6 +1,4 @@
 import * as React from "react";
-import { motion } from "framer-motion";
-import { pathVariants } from "../animations";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
 
 function Rectangle({
@@ -13,7 +11,7 @@ function Rectangle({
   const length = parseInt(len);
   const xViewPortSize = length + strokeWidth * 2;
   const yViewPortSize = length * 0.5 + strokeWidth * 2;
-  const controls = useShapeAnimation(length);
+  const [pathRef] = useShapeAnimation(length);
 
   if (!length) return null;
 
@@ -24,10 +22,8 @@ function Rectangle({
       height={`${length / 2}px`}
       viewBox={`-${strokeWidth} -${strokeWidth} ${xViewPortSize} ${yViewPortSize}`}
     >
-      <motion.path
-        variants={pathVariants}
-        initial="initial"
-        animate={controls}
+      <path
+        ref={pathRef}
         d={`M 0 0 H ${length} V ${length / 2} H 0 L 0 0`}
         stroke={stroke}
         fill={fill}

@@ -1,12 +1,8 @@
 import * as React from "react";
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin.min";
-
-gsap.registerPlugin(DrawSVGPlugin);
 
 const useShapeAnimation = (length) => {
   const pathRef = React.useRef();
-  const tl = gsap.timeline({ onComplete: function () {} });
+  const tl = window.gsap.timeline({ onComplete: function () {} });
 
   React.useEffect(() => {
     const path = pathRef.current;

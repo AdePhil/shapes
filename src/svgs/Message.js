@@ -1,9 +1,11 @@
 import * as React from "react";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
+import { motion } from "framer-motion";
+import { pathVariants } from "../animations";
 function Message({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
   const length = parseInt(len);
   const viewPortSize = length + strokeWidth * 2;
-  const [pathRef] = useShapeAnimation(length);
+  const [controls] = useShapeAnimation(length);
 
   if (!length) return null;
 
@@ -14,8 +16,10 @@ function Message({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
       height={`${length}px`}
       viewBox={`-${strokeWidth} -${strokeWidth} ${viewPortSize} ${viewPortSize}`}
     >
-      <path
-        ref={pathRef}
+      <motion.path
+        initial="initial"
+        variants={pathVariants}
+        animate={controls}
         d={`M 0 0, ${length} 0, L ${length} ${length * 0.75}, L ${
           length * 0.75
         } ${length * 0.75}, L ${length * 0.75} ${length}, L ${length * 0.5} ${

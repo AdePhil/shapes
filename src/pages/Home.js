@@ -25,6 +25,7 @@ import RightArrow from "../svgs/RightArrow";
 import Octagon from "../svgs/Octagon";
 import Parallelogram from "../svgs/Parallelogram";
 import Times from "../svgs/Times";
+import debounce from "lodash.debounce";
 
 const Container = styled.div`
   height: 100vh;
@@ -167,7 +168,13 @@ const Home = ({ isDark, setDark }) => {
   const [stroke, setStroke] = useLocalStorage("stroke", "#E19898");
 
   const [length, setLength] = useLocalStorage("shapeLength", 300);
+  const [lengthInput, setLengthInput] = React.useState(300);
   const Shape = shapesMap[shapeName];
+
+  const setDebouncedLength = React.useCallback(
+    debounce((q) => setLength(q), 800),
+    []
+  );
 
   return (
     <Container>
@@ -203,9 +210,10 @@ const Home = ({ isDark, setDark }) => {
               type="number"
               name="length"
               placeholder="Enter shape length"
-              value={length}
+              value={lengthInput}
               onChange={(e) => {
-                setLength(e.target.value);
+                setLengthInput(e.target.value);
+                setDebouncedLength(e.target.value);
               }}
             />
           </InputGroup>

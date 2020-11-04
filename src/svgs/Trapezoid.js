@@ -1,5 +1,7 @@
 import * as React from "react";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
+import { motion } from "framer-motion";
+import { pathVariants } from "../animations";
 function Trapezoid({
   length: len = 0,
   strokeWidth = 2,
@@ -9,7 +11,7 @@ function Trapezoid({
 }) {
   const length = parseInt(len);
   const viewPortSize = length + strokeWidth * 2;
-  const [pathRef] = useShapeAnimation(length);
+  const [controls] = useShapeAnimation(length);
 
   if (!length) return null;
 
@@ -22,8 +24,10 @@ function Trapezoid({
         viewPortSize * 0.5
       }`}
     >
-      <path
-        ref={pathRef}
+      <motion.path
+        initial="initial"
+        variants={pathVariants}
+        animate={controls}
         d={`M 0 ${length / 2} L ${length * 0.2} 0 L ${
           length * 0.8
         } 0 L ${length} ${length / 2}  L 0 ${length / 2}`}

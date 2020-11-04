@@ -1,5 +1,7 @@
 import * as React from "react";
 import useShapeAnimation from "../Hooks/useShapeAnimation";
+import { motion } from "framer-motion";
+import { pathVariants } from "../animations";
 
 function Star({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const calcStarPoints = (
@@ -46,7 +48,7 @@ function Star({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const length = parseInt(len);
   const xviewPortSize = length + 4;
   const yviewPortSize = 2 * length + 4;
-  const [pathRef] = useShapeAnimation(length);
+  const [controls] = useShapeAnimation(length);
 
   if (!length) return null;
 
@@ -59,8 +61,10 @@ function Star({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
       height={`${2 * length}px`}
       viewBox={`-2 -2 ${xviewPortSize} ${yviewPortSize}`}
     >
-      <path
-        ref={pathRef}
+      <motion.path
+        initial="initial"
+        variants={pathVariants}
+        animate={controls}
         d={points}
         stroke={stroke}
         fill={fill}

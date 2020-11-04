@@ -1,17 +1,20 @@
 import * as React from "react";
-import KUTE from "kute.js";
+import { useAnimation } from "framer-motion";
 
 const useShapeAnimation = (length) => {
-  const pathRef = React.useRef();
+  const controls = useAnimation();
 
   React.useEffect(() => {
-    const path = pathRef.current;
-    if (!path) return;
-    KUTE.set(path, { drawSVG: "0% 0%", opacity: 0 });
-    KUTE.to(path, 2, { drawSVG: "100% 0", opacity: 1, delay: 0.4 });
-  }, [length]);
+    controls.set("initial");
+    controls.start("animate").then(() => {
+      const path = document.querySelector("path");
+      if (!path) return;
+      path.removeAttribute("stroke-dasharray");
+      path.removeAttribute("stroke-dashoffset");
+    });
+  }, [controls, length]);
 
-  return [pathRef];
+  return [controls];
 };
 
 export default useShapeAnimation;

@@ -190,6 +190,10 @@ const GlobalStyle = (props) => (
         border: none;
       }
 
+      input {
+        font-size: 16px;
+      }
+
       /* Utility classes
  * *********************************** */
 

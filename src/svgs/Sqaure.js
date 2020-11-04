@@ -11,6 +11,7 @@ function Square({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
   if (!length) return null;
   return (
     <svg
+      data-testid="square"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

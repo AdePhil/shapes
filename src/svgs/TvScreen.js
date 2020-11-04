@@ -12,6 +12,7 @@ function TvScreen({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
 
   return (
     <svg
+      data-testid="tv-screen"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

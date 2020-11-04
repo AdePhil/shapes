@@ -11,6 +11,7 @@ function Octagon({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
 
   return (
     <svg
+      data-testid="octagon"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

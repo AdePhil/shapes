@@ -1,4 +1,4 @@
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import { ThemeProvider } from "emotion-theming";
 import GlobalStyle from "./GlobalStyle";
 import { lightTheme, darkTheme } from "./theme";

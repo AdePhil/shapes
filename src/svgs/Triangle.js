@@ -12,6 +12,7 @@ function Triangle({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
 
   return (
     <svg
+      data-testid="triangle"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

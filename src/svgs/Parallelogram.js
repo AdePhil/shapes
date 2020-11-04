@@ -17,6 +17,7 @@ function Parallelogram({
 
   return (
     <svg
+      data-testid="parallelogram"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

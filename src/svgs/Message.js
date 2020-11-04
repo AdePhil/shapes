@@ -11,6 +11,7 @@ function Message({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
 
   return (
     <svg
+      data-testid="message"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

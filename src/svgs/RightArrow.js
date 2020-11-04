@@ -17,6 +17,7 @@ function RightArrow({
 
   return (
     <svg
+      data-testid="right-arrow"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

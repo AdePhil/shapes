@@ -17,6 +17,7 @@ function CutDiamond({
 
   return (
     <svg
+      data-testid="cut-diamond"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

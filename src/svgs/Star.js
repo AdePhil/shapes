@@ -4,68 +4,31 @@ import { motion } from "framer-motion";
 import { pathVariants } from "../animations";
 
 function Star({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
-  const calcStarPoints = (
-    centerX,
-    centerY,
-    innerCirclePoints,
-    innerRadius,
-    outerRadius
-  ) => {
-    const angle = Math.PI / innerCirclePoints;
-    const angleOffsetToCenterStar = 45;
-
-    const totalPoints = innerCirclePoints * 2; // 10 in a 5-points star
-    let points = "M";
-    for (let i = 0; i < totalPoints; i++) {
-      let isEvenIndex = i % 2 === 0;
-      let r = isEvenIndex ? outerRadius : innerRadius;
-      let currX = centerX + Math.cos(i * angle + angleOffsetToCenterStar) * r;
-      let currY = centerY + Math.sin(i * angle + angleOffsetToCenterStar) * r;
-      points += currX + "," + currY + " ";
-    }
-    points += "z";
-    return points;
-  };
-
-  const getStarPoints = () => {
-    let centerX = length / 2;
-    let centerY = length;
-    let innerCirclePoints = 5;
-
-    let innerRadius = length / innerCirclePoints;
-    let innerOuterRadiusRatio = 2;
-    let outerRadius = innerRadius * innerOuterRadiusRatio;
-
-    return calcStarPoints(
-      centerX,
-      centerY,
-      innerCirclePoints,
-      innerRadius,
-      outerRadius
-    );
-  };
-
   const length = parseInt(len);
-  const xviewPortSize = length + 4;
-  const yviewPortSize = 2 * length + 4;
+  const viewPortSize = length + strokeWidth * 2;
   const [controls] = useShapeAnimation(length);
-
-  if (!length) return null;
-
-  const points = getStarPoints();
 
   return (
     <svg
+      data-testid="star"
       {...rest}
       width={`${length}px`}
-      height={`${2 * length}px`}
-      viewBox={`-2 -2 ${xviewPortSize} ${yviewPortSize}`}
+      height={`${length}px`}
+      viewBox={`-${strokeWidth} -${strokeWidth} ${viewPortSize} ${viewPortSize}`}
     >
       <motion.path
         initial="initial"
         variants={pathVariants}
         animate={controls}
-        d={points}
+        d={`M ${length * 0.5} 0, L ${length * 0.61} ${length * 0.35}, L ${
+          length * 0.98
+        } ${length * 0.35}, L ${length * 0.68} ${length * 0.57}, L ${
+          length * 0.79
+        } ${length * 0.91}, L ${length * 0.5} ${length * 0.7}, L ${
+          length * 0.21
+        } ${length * 0.91}, L ${length * 0.32} ${length * 0.57}, L ${
+          length * 0.1
+        } ${length * 0.35} , L ${length * 0.39} ${length * 0.35}z`}
         stroke={stroke}
         fill={fill}
         strokeWidth={2}

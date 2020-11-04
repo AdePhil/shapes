@@ -11,6 +11,7 @@ function Envelop({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
 
   return (
     <svg
+      data-testid="envelop"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

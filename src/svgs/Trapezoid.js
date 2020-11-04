@@ -17,6 +17,7 @@ function Trapezoid({
 
   return (
     <svg
+      data-testid="trapezoid"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

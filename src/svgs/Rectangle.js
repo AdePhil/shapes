@@ -19,6 +19,7 @@ function Rectangle({
 
   return (
     <svg
+      data-testid="rectangle"
       {...rest}
       width={`${length}px`}
       height={`${length / 2}px`}

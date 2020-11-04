@@ -10,6 +10,7 @@ function Hexagon({ length: len = 2, fill, stroke, strokeWidth = 2, ...rest }) {
   if (!length) return null;
   return (
     <svg
+      data-testid="hexagon"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

@@ -11,6 +11,7 @@ function Diamond({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
 
   return (
     <svg
+      data-testid="diamond"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

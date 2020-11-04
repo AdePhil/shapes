@@ -8,12 +8,11 @@ function Circle({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const viewPortSize = length + 4;
   const [controls] = useShapeAnimation(length);
 
-  console.log("circle", length);
-
   if (!length) return null;
 
   return (
     <svg
+      data-testid="circle"
       {...rest}
       width={`${length}px`}
       height={`${length}px`}

@@ -1,30 +1,30 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import { Select, Input } from "../components/atoms";
-import Bg from "../assets/pngs/bg2.jpg";
-import Circle from "../svgs/Circle";
-import Rectangle from "../svgs/Rectangle";
-import Square from "../svgs/Sqaure";
-import lightIcon from "../assets/svgs/light.svg";
-import darkIcon from "../assets/svgs/dark.svg";
-import Triangle from "../svgs/Triangle";
-import Pentagon from "../svgs/Pentagon";
-import Hexagon from "../svgs/Hexagon";
-import Star from "../svgs/Star";
-import { useLocalStorage } from "../Hooks/useLocalStorage";
-import CutDiamond from "../svgs/CutDiamond";
-import Diamond from "../svgs/Diamond";
-import TvScreen from "../svgs/TvScreen";
-import Cone from "../svgs/Cone";
-import Envelop from "../svgs/Envelop";
-import Plus from "../svgs/Plus";
-import Trapezoid from "../svgs/Trapezoid";
-import Message from "../svgs/Message";
-import LeftArrow from "../svgs/LeftArrow";
-import RightArrow from "../svgs/RightArrow";
-import Octagon from "../svgs/Octagon";
-import Parallelogram from "../svgs/Parallelogram";
-import Times from "../svgs/Times";
+import { Select, Input } from "../../components/atoms";
+import Bg from "../../assets/pngs/bg2.jpg";
+import Circle from "../../svgs/Circle";
+import Rectangle from "../../svgs/Rectangle";
+import Square from "../../svgs/Sqaure";
+import lightIcon from "../../assets/svgs/light.svg";
+import darkIcon from "../../assets/svgs/dark.svg";
+import Triangle from "../../svgs/Triangle";
+import Pentagon from "../../svgs/Pentagon";
+import Hexagon from "../../svgs/Hexagon";
+import Star from "../../svgs/Star";
+import { useLocalStorage } from "../../Hooks/useLocalStorage";
+import CutDiamond from "../../svgs/CutDiamond";
+import Diamond from "../../svgs/Diamond";
+import TvScreen from "../../svgs/TvScreen";
+import Cone from "../../svgs/Cone";
+import Envelop from "../../svgs/Envelop";
+import Plus from "../../svgs/Plus";
+import Trapezoid from "../../svgs/Trapezoid";
+import Message from "../../svgs/Message";
+import LeftArrow from "../../svgs/LeftArrow";
+import RightArrow from "../../svgs/RightArrow";
+import Octagon from "../../svgs/Octagon";
+import Parallelogram from "../../svgs/Parallelogram";
+import Times from "../../svgs/Times";
 import debounce from "lodash.debounce";
 
 const Container = styled.div`
@@ -168,7 +168,7 @@ const Home = ({ isDark, setDark }) => {
   const [stroke, setStroke] = useLocalStorage("stroke", "#E19898");
 
   const [length, setLength] = useLocalStorage("shapeLength", 300);
-  const [lengthInput, setLengthInput] = React.useState(300);
+  const [lengthInput, setLengthInput] = React.useState(length);
   const Shape = shapesMap[shapeName];
 
   const setDebouncedLength = React.useCallback(
@@ -245,7 +245,7 @@ const Home = ({ isDark, setDark }) => {
       </TopHalf>
       <BottomHalf>
         <DrawBoard>
-          {Shape && <Shape length={length} fill={fill} stroke={stroke} />}
+          {Shape && <Shape length={lengthInput} fill={fill} stroke={stroke} />}
         </DrawBoard>
       </BottomHalf>
     </Container>

@@ -594,7 +594,7 @@ describe("check if svg renders with right length from input", () => {
     });
 
     expect(svg).toHaveAttribute("width", `${length}px`);
-    expect(svg).toHaveAttribute("height", `${length / 2}px`);
+    expect(svg).toHaveAttribute("height", `${length}px`);
   });
 
   test("check cone svg length", async () => {

@@ -1,6 +1,6 @@
 # Shapes App
 
-The shapes app draws objects to the screen based on the shape and length of the shape selected. [Shapes App](https://shapes-omega.vercel.app/).
+The shapes app draws objects to the screen based on the shape and length selected. [Shapes App](https://shapes-omega.vercel.app/).
 
 ## Features
 

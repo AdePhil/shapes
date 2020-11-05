@@ -16,7 +16,7 @@ function TvScreen({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
       data-testid="tv-screen"
       {...rest}
       width={`${length}px`}
-      height={`${length / 2}px`}
+      height={`${length}px`}
       viewBox={`-${strokeWidth + curveSize} -${
         strokeWidth + curveSize
       } ${xViewPortSize} ${yViewPortSize}`}

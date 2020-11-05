@@ -1,13 +1,13 @@
 # Shapes App
 
-The shapes app draws objects to the screen based on the shape and length of the shapes selected. [Shapes App](https://shapes-omega.vercel.app/).
+The shapes app draws objects to the screen based on the shape and length of the shape selected. [Shapes App](https://shapes-omega.vercel.app/).
 
 ## Features
 
 - Dynamic lengths
 - 20 shapes available for selection
 - No shape is drawn if length is 0 or empty
-- Shapes are animated (opacity and s)
+- Shapes are animated (opacity and stroke)
 - Dynamic stroke color
 - Dynamic fill color
 - Light/Dark mode

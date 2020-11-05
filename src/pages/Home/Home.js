@@ -26,6 +26,7 @@ import Octagon from "../../svgs/Octagon";
 import Parallelogram from "../../svgs/Parallelogram";
 import Times from "../../svgs/Times";
 import debounce from "lodash.debounce";
+import { useTheme } from "emotion-theming";
 
 const Container = styled.div`
   height: 100vh;
@@ -37,16 +38,16 @@ const Container = styled.div`
   }
 `;
 const TopHalf = styled.div`
-  box-shadow: 0 0px 50px rgba(0, 0, 0, 0.16);
+  box-shadow: ${({ theme }) => `0 0px 50px ${theme.colors.shadow}`};
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url(${Bg});
-  background: linear-gradient(
-      rgba(22, 22, 29, 0.95) 100%,
-      rgba(22, 22, 29, 0.95) 100%
+  background: ${({ theme }) => `linear-gradient(
+      ${theme.colors.backgroundGradient} 100%,
+      ${theme.colors.backgroundGradient} 100%
     ),
-    url(${Bg});
+    url(${Bg})`};
   background-size: contain;
   padding: 0 1.5rem;
   position: relative;
@@ -59,7 +60,7 @@ const TopHalf = styled.div`
 const Heading = styled.h1`
   margin: 0;
   font-size: 4.5rem;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
   padding: 1rem;
 `;
@@ -163,7 +164,7 @@ const shapesMap = {
 };
 
 const Label = styled.label`
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white}; ;
 `;
 
 const Info = styled.p`
@@ -179,10 +180,11 @@ const Info = styled.p`
 `;
 
 const Home = ({ isDark, setDark }) => {
+  const { colors } = useTheme();
   const [shapeName, setShapeName] = useLocalStorage("shapeName", "");
 
-  const [fill, setFill] = useLocalStorage("fill", "#A3A3D7");
-  const [stroke, setStroke] = useLocalStorage("stroke", "#E19898");
+  const [fill, setFill] = useLocalStorage("fill", colors.defaultFill);
+  const [stroke, setStroke] = useLocalStorage("stroke", colors.defaultStroke);
 
   const [length, setLength] = useLocalStorage("shapeLength", 300);
   const [lengthInput, setLengthInput] = React.useState(length);
@@ -193,14 +195,16 @@ const Home = ({ isDark, setDark }) => {
   const boardRef = React.useRef();
 
   const setDebouncedLength = React.useCallback(
-    debounce((q) => setLength(q), 800),
+    debounce((len) => setLength(len), 800),
     []
   );
 
   const numberLength = parseInt(length);
   const scaleLength = numberLength > boardWidth;
-  const scaledLength = scaleLength
-    ? (boardWidth / length) * boardWidth
+  let scaledLength = !boardWidth
+    ? numberLength
+    : scaleLength
+    ? (boardWidth / numberLength) * boardWidth
     : numberLength;
 
   React.useEffect(() => {
@@ -278,10 +282,8 @@ const Home = ({ isDark, setDark }) => {
       </TopHalf>
       <BottomHalf>
         {scaleLength && <Info isDark={isDark}>Scaled down</Info>}
-        <DrawBoard id="board" ref={boardRef}>
-          {Shape && scaledLength && (
-            <Shape length={scaledLength} fill={fill} stroke={stroke} />
-          )}
+        <DrawBoard data-testid="board" ref={boardRef}>
+          {Shape && <Shape length={scaledLength} fill={fill} stroke={stroke} />}
         </DrawBoard>
       </BottomHalf>
     </Container>

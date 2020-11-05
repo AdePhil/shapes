@@ -11,8 +11,8 @@ const Select = styled.select`
   background-position: calc(100% - 0.8rem) 50%;
   background-repeat: no-repeat;
   border-radius: 0.5rem;
-  border: 1px solid rgba(226, 224, 224, 0.86);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+  border: ${({ theme }) => `1px solid ${theme.colors.inputBorder}`};
+  box-shadow: ${({ theme }) => `0 1px 1px 0 ${theme.colors.inputShadow}`};
   color: ${({ theme, textColor }) =>
     theme.colors[textColor] || theme.colors.label};
   font-size: 1.4rem;
@@ -30,7 +30,7 @@ const Select = styled.select`
       cursor: not-allowed;
     `}
   &::placeholder {
-    color: ${(props) => props.theme.colors.brownishgrey};
+    color: ${({ theme }) => theme.colors.brownishgrey};
   }
 `;
 

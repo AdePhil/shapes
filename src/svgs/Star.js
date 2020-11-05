@@ -8,6 +8,8 @@ function Star({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const viewPortSize = length + strokeWidth * 2;
   const [controls] = useShapeAnimation(length);
 
+  if (!length) return null;
+
   return (
     <svg
       data-testid="star"

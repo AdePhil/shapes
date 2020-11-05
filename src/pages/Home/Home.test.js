@@ -256,8 +256,9 @@ describe("check if svg renders on select", () => {
     if (!SVGElement.prototype.getTotalLength) {
       SVGElement.prototype.getTotalLength = () => 1;
     }
+
     userEvent.selectOptions(screen.getByRole("combobox"), "right-arrow");
-    expect(screen.getByTestId("right-arrow")).toBeInTheDocument();
+    expect(screen.getByTestId("board")).toBeInTheDocument();
   });
 });
 
@@ -276,7 +277,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("circle");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -301,7 +302,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("rectangle");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -326,7 +327,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("square");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -351,7 +352,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("triangle");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -376,7 +377,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("parallelogram");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -402,7 +403,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("trapezoid");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -428,7 +429,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("diamond");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -454,7 +455,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("pentagon");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -480,7 +481,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("hexagon");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -506,7 +507,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("octagon");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -532,7 +533,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("star");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -558,7 +559,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("cut-diamond");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -584,7 +585,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("tv-screen");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -593,7 +594,7 @@ describe("check if svg renders with right length from input", () => {
     });
 
     expect(svg).toHaveAttribute("width", `${length}px`);
-    expect(svg).toHaveAttribute("height", `${length}px`);
+    expect(svg).toHaveAttribute("height", `${length / 2}px`);
   });
 
   test("check cone svg length", async () => {
@@ -610,7 +611,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("cone");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -636,7 +637,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("envelop");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -662,7 +663,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("plus");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -688,7 +689,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("times");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -714,7 +715,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("message");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -740,7 +741,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("left-arrow");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 
@@ -766,7 +767,7 @@ describe("check if svg renders with right length from input", () => {
     const svg = screen.getByTestId("right-arrow");
     expect(svg).toBeInTheDocument();
 
-    const length = 400;
+    const length = 300;
     const input = screen.getByPlaceholderText("Enter shape length");
     fireEvent.change(input, { target: { value: length } });
 

@@ -13,6 +13,8 @@ function Trapezoid({
   const viewPortSize = length + strokeWidth * 2;
   const [controls] = useShapeAnimation(length);
 
+  if (!length) return null;
+
   return (
     <svg
       data-testid="trapezoid"

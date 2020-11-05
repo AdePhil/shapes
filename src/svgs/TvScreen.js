@@ -5,18 +5,21 @@ import { pathVariants } from "../animations";
 function TvScreen({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
   const length = parseInt(len);
   const curveSize = 20;
-  const viewPortSize = length + strokeWidth * 2 + 4 * curveSize;
+  const xViewPortSize = length + strokeWidth * 2 + 4 * curveSize;
+  const yViewPortSize = length * 0.5 + strokeWidth * 2 + 6 * curveSize;
   const [controls] = useShapeAnimation(length);
+
+  if (!length) return null;
 
   return (
     <svg
       data-testid="tv-screen"
       {...rest}
       width={`${length}px`}
-      height={`${length}px`}
+      height={`${length / 2}px`}
       viewBox={`-${strokeWidth + curveSize} -${
         strokeWidth + curveSize
-      } ${viewPortSize} ${viewPortSize}`}
+      } ${xViewPortSize} ${yViewPortSize}`}
     >
       <motion.path
         initial="initial"

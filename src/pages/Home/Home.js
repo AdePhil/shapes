@@ -110,9 +110,14 @@ const BottomHalf = styled.div`
   align-items: center;
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
 
   @media (max-width: 1000px) {
     align-items: flex-start;
+  }
+
+  @media (max-width: 600px) {
+    min-height: 600px;
   }
 `;
 
@@ -161,6 +166,18 @@ const Label = styled.label`
   color: #fff;
 `;
 
+const Info = styled.p`
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-weight: bold;
+  color: ${({ theme, isDark }) =>
+    isDark ? theme.colors.white : theme.colors.dark};
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
+`;
+
 const Home = ({ isDark, setDark }) => {
   const [shapeName, setShapeName] = useLocalStorage("shapeName", "");
 
@@ -171,10 +188,24 @@ const Home = ({ isDark, setDark }) => {
   const [lengthInput, setLengthInput] = React.useState(length);
   const Shape = shapesMap[shapeName];
 
+  const [boardWidth, setBoardWidth] = React.useState();
+
   const setDebouncedLength = React.useCallback(
     debounce((q) => setLength(q), 800),
     []
   );
+
+  const numberLength = parseInt(length);
+  const scaleLength = numberLength > boardWidth;
+  const scaledLength = scaleLength
+    ? (boardWidth / length) * boardWidth
+    : numberLength;
+
+  React.useEffect(() => {
+    const boardWidth = document.querySelector("#board").getBoundingClientRect()
+      .width;
+    setBoardWidth(boardWidth);
+  }, []);
 
   return (
     <Container>
@@ -244,8 +275,9 @@ const Home = ({ isDark, setDark }) => {
         </HeadingGroup>
       </TopHalf>
       <BottomHalf>
-        <DrawBoard>
-          {Shape && <Shape length={length} fill={fill} stroke={stroke} />}
+        {scaleLength && <Info isDark={isDark}>Scaled down</Info>}
+        <DrawBoard id="board">
+          {Shape && <Shape length={scaledLength} fill={fill} stroke={stroke} />}
         </DrawBoard>
       </BottomHalf>
     </Container>

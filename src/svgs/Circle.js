@@ -7,11 +7,13 @@ function Circle({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const length = parseInt(len);
   const viewPortSize = length + 4;
   const [controls] = useShapeAnimation(length);
+  const svgRef = React.useRef();
 
   if (!length) return null;
 
   return (
     <svg
+      ref={svgRef}
       data-testid="circle"
       {...rest}
       width={`${length}px`}

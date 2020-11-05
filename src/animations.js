@@ -7,8 +7,7 @@ export const pathVariants = {
     pathLength: 1,
     opacity: 1,
     transition: {
-      duration: 3,
-      ease: "linear",
+      duration: 2,
     },
   },
 };

@@ -8,7 +8,7 @@ const Select = styled.select`
   appearance: none;
   background-color: ${({ theme, color }) => `${theme.colors.white}`};
   background-image: ${({ white }) => `url(${CaretGray})`};
-  background-position: calc(100% - 1rem) 50%;
+  background-position: calc(100% - 0.8rem) 50%;
   background-repeat: no-repeat;
   border-radius: 0.5rem;
   border: 1px solid rgba(226, 224, 224, 0.86);
@@ -18,7 +18,7 @@ const Select = styled.select`
   font-size: 1.4rem;
   height: ${({ padding }) => (padding ? "auto" : "4.8rem")};
   outline: none;
-  padding: ${({ padding }) => padding || "0 1.5rem"};
+  padding: ${({ padding }) => padding || "0 1.8rem 0 1.5rem "};
   position: relative;
   width: 100%;
   flex: 1;
@@ -27,7 +27,6 @@ const Select = styled.select`
   ${({ disabled }) =>
     disabled &&
     css`
-      /* background-color: rgba(128, 128, 128, 0.12); */
       cursor: not-allowed;
     `}
   &::placeholder {

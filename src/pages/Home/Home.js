@@ -245,7 +245,7 @@ const Home = ({ isDark, setDark }) => {
       </TopHalf>
       <BottomHalf>
         <DrawBoard>
-          {Shape && <Shape length={lengthInput} fill={fill} stroke={stroke} />}
+          {Shape && <Shape length={length} fill={fill} stroke={stroke} />}
         </DrawBoard>
       </BottomHalf>
     </Container>

@@ -194,6 +194,7 @@ const Home = ({ isDark, setDark }) => {
 
   const boardRef = React.useRef();
 
+  // eslint-disable-next-line
   const setDebouncedLength = React.useCallback(
     debounce((len) => setLength(len), 800),
     []

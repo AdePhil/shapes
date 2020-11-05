@@ -5,7 +5,7 @@ import { pathVariants } from "../animations";
 function TvScreen({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
   const length = parseInt(len);
   const curveSize = 20;
-  const xViewPortSize = length + strokeWidth * 2 + 4 * curveSize;
+  const xViewPortSize = length + strokeWidth * 2 + 2 * curveSize;
   const yViewPortSize = length * 0.5 + strokeWidth * 2 + 6 * curveSize;
   const [controls] = useShapeAnimation(length);
 

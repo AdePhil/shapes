@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { Select, Input } from "../../components/atoms";
-import Bg from "../../assets/pngs/bg2.jpg";
+import Bg from "../../assets/img/bg2.jpg";
 import Circle from "../../svgs/Circle";
 import Rectangle from "../../svgs/Rectangle";
 import Square from "../../svgs/Sqaure";

@@ -190,6 +190,8 @@ const Home = ({ isDark, setDark }) => {
 
   const [boardWidth, setBoardWidth] = React.useState();
 
+  const boardRef = React.useRef();
+
   const setDebouncedLength = React.useCallback(
     debounce((q) => setLength(q), 800),
     []
@@ -202,8 +204,8 @@ const Home = ({ isDark, setDark }) => {
     : numberLength;
 
   React.useEffect(() => {
-    const boardWidth = document.querySelector("#board").getBoundingClientRect()
-      .width;
+    if (!boardRef.current) return;
+    const boardWidth = boardRef.current.getBoundingClientRect().width;
     setBoardWidth(boardWidth);
   }, []);
 
@@ -276,8 +278,10 @@ const Home = ({ isDark, setDark }) => {
       </TopHalf>
       <BottomHalf>
         {scaleLength && <Info isDark={isDark}>Scaled down</Info>}
-        <DrawBoard id="board">
-          {Shape && <Shape length={scaledLength} fill={fill} stroke={stroke} />}
+        <DrawBoard id="board" ref={boardRef}>
+          {Shape && scaledLength && (
+            <Shape length={scaledLength} fill={fill} stroke={stroke} />
+          )}
         </DrawBoard>
       </BottomHalf>
     </Container>

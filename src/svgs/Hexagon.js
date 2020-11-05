@@ -7,7 +7,7 @@ function Hexagon({ length: len = 2, fill, stroke, strokeWidth = 2, ...rest }) {
   const length = parseInt(len);
   const viewPortSize = length + 4;
   const [controls] = useShapeAnimation(length);
-  if (!length) return null;
+
   return (
     <svg
       data-testid="hexagon"

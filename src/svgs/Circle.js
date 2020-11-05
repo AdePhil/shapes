@@ -9,8 +9,6 @@ function Circle({ length: len = 0, stroke, strokeWidth = 2, fill, ...rest }) {
   const [controls] = useShapeAnimation(length);
   const svgRef = React.useRef();
 
-  if (!length) return null;
-
   return (
     <svg
       ref={svgRef}

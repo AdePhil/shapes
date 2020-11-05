@@ -8,8 +8,6 @@ function TvScreen({ length: len = 0, strokeWidth = 2, stroke, fill, ...rest }) {
   const viewPortSize = length + strokeWidth * 2 + 4 * curveSize;
   const [controls] = useShapeAnimation(length);
 
-  if (!length) return null;
-
   return (
     <svg
       data-testid="tv-screen"
